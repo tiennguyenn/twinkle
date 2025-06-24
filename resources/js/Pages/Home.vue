@@ -1,12 +1,11 @@
 <script setup>
-import Layout from "@/Shared/Layout.vue";
+import { Link } from "@inertiajs/vue3";
 </script>
 
 <template>
-    <Layout>
-        <div class="container">
-            <h1>Welcome to the Home Page</h1>
-            <p>This is a simple Vue.js application.</p>
-        </div>
-    </Layout>
+    <div class="container">
+        <h1>Welcome to the Home Page</h1>
+        <p>This is a simple Vue.js application.</p>
+    </div>
+    <Link href="/users">Go to Users</Link>
 </template>
