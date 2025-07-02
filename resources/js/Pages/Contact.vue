@@ -1,16 +1,16 @@
 <script setup>
-import { reactive } from "vue";
-import { router } from "@inertiajs/vue3";
+import { usePage, useForm } from "@inertiajs/vue3";
 
-const form = reactive({
+const page = usePage();
+
+const form = useForm({
     name: "",
     email: "",
     message: "",
 });
 
 function submit() {
-    router.post("/contact", form);
-    console.log("Form submitted:", form);
+    form.post("/contact");
 }
 </script>
 <template>
@@ -27,6 +27,9 @@ function submit() {
                     v-model="form.name"
                     required
                 />
+                <span v-if="form.errors.name" class="error">
+                    {{ form.errors.name }}
+                </span>
             </div>
             <div>
                 <label for="email">Email:</label>
@@ -37,6 +40,9 @@ function submit() {
                     v-model="form.email"
                     required
                 />
+                <span v-if="form.errors.email" class="error">
+                    {{ form.errors.email }}
+                </span>
             </div>
             <div>
                 <label for="message">Message:</label>
@@ -46,8 +52,13 @@ function submit() {
                     v-model="form.message"
                     required
                 ></textarea>
+                <span v-if="form.errors.message" class="error">
+                    {{ form.errors.message }}
+                </span>
             </div>
-            <button type="submit">Send message</button>
+            <button :disabled="form.processing" type="submit">
+                Send message
+            </button>
         </form>
         <p>Thank you for reaching out to us!</p>
         <p>We will get back to you as soon as possible.</p>
