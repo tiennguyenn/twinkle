@@ -8,6 +8,13 @@
         @vite('resources/css/app.css')
     </head>
     <body>
+        <nav>
+            <ul class="flex space-x-4 p-4 bg-gray-800">
+                <li><a href="/" @class="hover:underline">Home</a></li>
+                <li><a href="/posts" class="hover:underline">Posts</a></li>
+                <li><a href="/counter" class="hover:underline">Counter</a></li>
+            </ul>
+        </nav>
         {{ $slot }}
     </body>
 </html>
