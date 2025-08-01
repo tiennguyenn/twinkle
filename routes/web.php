@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\CounterController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -20,3 +21,5 @@ Route::get('/about', function () {
 
 Route::get('/contact', [ContactController::class, 'show'])->name('contact');
 Route::post('/contact', [ContactController::class, 'send'])->name('contact.send');
+
+Route::get('/counter', [CounterController::class, 'index'])->name('counter');
